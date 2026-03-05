@@ -121,4 +121,4 @@ sequenceDiagram
 | Метод | Путь                                                | Описание |Тело запроса | Ответ (успех) |
 |-----|---------------------------------------------------------|-----|-----|-----|
 | POST | `/v1/auth/login` | Получение токена | ```{"username":"student","password":"student"}``` | ```{"access_token":"demo-token","token_type":"Bearer"}``` |
-| 401 | `Отсутствует или невалидный токен`                      | 
+| GET | `/v1/auth/verify` | Проверка токена | - | 	{"valid":true,"subject":"student"} |
