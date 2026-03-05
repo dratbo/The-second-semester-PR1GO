@@ -133,3 +133,44 @@ sequenceDiagram
 | GET | `/v1/tasks/{id}` | Получить задачу по ID | - |`200 OK` + задача|
 | PATCH | `/v1/tasks/{id}` | Обновить задачу | ```{"done":true}``` (частичные поля) |`200 OK` + обновлённая задача|
 | DELETE | `/v1/tasks/{id}` | Удалить задачу | - |`204 No Content`|
+
+
+## 4. Подтверждение прокидывания request-id
+
+### Cоздание окружения с переменными 
+
+
+<img width="974" height="521" alt="image" src="https://github.com/user-attachments/assets/b1e95cac-67c8-42f7-bdeb-371874e3ae40" />
+
+
+### Получение токена (Auth)
+
+
+<img width="974" height="517" alt="image" src="https://github.com/user-attachments/assets/49726ea8-ebf0-434d-988b-eb33465d279b" />
+
+
+### Проверка токена напрямую (Auth)
+
+
+<img width="974" height="518" alt="image" src="https://github.com/user-attachments/assets/05ed288f-5f7e-4310-adea-cea2e4ff32d9" />
+
+
+### Создание задачи через Tasks (с токеном)
+
+
+<img width="974" height="517" alt="image" src="https://github.com/user-attachments/assets/e95a254a-f3d5-45cf-9094-9ec77dc143a7" />
+
+
+### Получение списка задач
+
+
+<img width="974" height="517" alt="image" src="https://github.com/user-attachments/assets/be82a613-399d-4766-bb73-21d8ab2e698c" />
+
+
+### Проверка отказа без токена
+
+
+<img width="974" height="518" alt="image" src="https://github.com/user-attachments/assets/64d32c05-41f0-4d09-bc95-a5980d6000d0" />
+
+
+
