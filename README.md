@@ -99,3 +99,16 @@
 Перед выполнением любой операции (кроме специально не защищённых) вызывает Auth для проверки токена.
 
 При невалидном токене возвращает ```401 Unauthorized```, при недоступности Auth – ```503 Service Unavailable```.
+
+## 2. Схема взаимодействия
+
+```sequenceDiagram
+    participant C as Client
+    participant T as Tasks Service
+    participant A as Auth Service
+
+    C->>T: Запрос с Authorization: Bearer <token> + X-Request-ID
+    T->>A: GET /v1/auth/verify (таймаут 3с, проброс X-Request-ID)
+    A-->>T: 200 OK (valid) / 401 Unauthorized
+    T-->>C: Результат операции (200/201/404/401/503...)
+```
