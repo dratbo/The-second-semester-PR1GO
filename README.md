@@ -102,7 +102,8 @@
 
 ## 2. Схема взаимодействия
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
     participant C as Client
     participant T as Tasks Service
     participant A as Auth Service
@@ -111,4 +112,4 @@
     T->>A: GET /v1/auth/verify (таймаут 3с, проброс X-Request-ID)
     A-->>T: 200 OK (valid) / 401 Unauthorized
     T-->>C: Результат операции (200/201/404/401/503...)
-```
+
