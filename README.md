@@ -173,4 +173,59 @@ sequenceDiagram
 <img width="974" height="518" alt="image" src="https://github.com/user-attachments/assets/64d32c05-41f0-4d09-bc95-a5980d6000d0" />
 
 
+### Прикладываю логи 
 
+Auth service (порт 8081):
+
+
+<img width="743" height="239" alt="image" src="https://github.com/user-attachments/assets/61439879-1172-4b01-9749-1b18dc032ca0" />
+
+
+Tasks service (порт 8082):
+
+
+<img width="706" height="132" alt="image" src="https://github.com/user-attachments/assets/c92e9955-4277-4b4c-9944-35d014a4433e" />
+
+
+## 5. Инструкция запуска
+
+5. Инструкция по запуску (Windows, PowerShell)
+Предварительные требования
+Установленный Go (версия 1.22+)
+
+Git (опционально) (я не знаю почему гпт везде пишет слово `опционально`)
+
+Postman или curl для тестирования
+
+### Шаги
+Клонировать репозиторий (если ещё не сделано):
+
+```bash
+git clone <url-репозитория>
+cd tech-ip-sem2
+```
+Инициализировать модуль и установить зависимости:
+
+```powershell
+go mod init tech-ip-sem2
+go get github.com/google/uuid
+go mod tidy
+```
+Запустить Auth сервис (в отдельном окне PowerShell):
+
+```powershell
+cd services/auth
+$env:AUTH_PORT = "8081"   # можно не указывать, по умолчанию 8081
+go run ./cmd/auth
+```
+Запустить Tasks сервис (в другом окне PowerShell):
+
+```powershell
+cd services/tasks
+$env:TASKS_PORT = "8082"
+$env:AUTH_BASE_URL = "http://localhost:8081"
+go run ./cmd/tasks
+```
+Проверить работу (через Postman или curl), используя эндпоинты, описанные выше.
+
+Остановка сервисов — нажать Ctrl+C в каждом окне.
